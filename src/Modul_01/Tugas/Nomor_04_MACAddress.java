@@ -8,7 +8,6 @@ package Modul_01.Tugas;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.net.NetworkInterface;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,7 +16,8 @@ import javax.swing.JOptionPane;
 public class Nomor_04_MACAddress {
      public static void main(String[] args) throws UnknownHostException {
         try {
-            InetAddress n = InetAddress.getLocalHost();
+            String input = "10.5.80.184";
+            InetAddress n = InetAddress.getByName(input);
             NetworkInterface mac = NetworkInterface.getByInetAddress(n);
             byte[] host = mac.getHardwareAddress() ;
                 
@@ -26,7 +26,7 @@ public class Nomor_04_MACAddress {
                 sb.append(String.format("%02X%s", host[i], (i < host.length - 1) ? "-" : ""));		
             }
                 
-            System.out.println("Mac Address from Localhost: "+sb.toString());
+            System.out.println("Mac Address: "+sb.toString());
 
         } catch (Exception e) {
             System.out.println(e);
